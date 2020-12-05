@@ -41,12 +41,12 @@ h3 {
     left: 0;
     background-color: #111;
     overflow-x: hidden;
-    padding-top: 60px;
+    padding-top: 1em;
     transition: 0.5s;
 }
 
 #openBtn {
-    font-size: 20px;
+    font-size: 12px;
     cursor: pointer;
     background-color: #111;
     color: white;

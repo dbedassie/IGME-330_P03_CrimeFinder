@@ -10,6 +10,9 @@ function initMap() {
     map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v10',
+        center: [-96.50390625,
+          40.01078714046552],
+        zoom: 4
     });
 
     // The 'building' layer in the mapbox-streets vector source contains building-height
@@ -67,23 +70,37 @@ function initMap() {
 function addMarkersToMap() {
     // add markers to map
     for (let feature of geojson.features) {
-        
+
     }
 }
 
 function addMarker(coordinates, title, description, className) {
     let el = document.createElement('div');
     el.className = className;
-    
+
     new mapboxgl.Marker(el)
         .setLngLat(coordinates)
-        .setPopup(new mapboxgl.Popup({ offset : 25}) // add popups
-        .setHTML('<h3>' + title + '</h3><p>' + description + '</p>'))
+        .setPopup(new mapboxgl.Popup({
+                offset: 25
+            }) // add popups
+            .setHTML('<h3>' + title + '</h3><p>' + description + '</p>'))
         .addTo(map);
 }
 
 function loadMarkers() {
 
+}
+
+function addCirclesToMap() {
+    /*
+        TO DO:
+            Create circles on maps based on array of data.
+            Ethnicity, type of crime, etc.
+            Sort each of these categories with their own color.
+            Let user choose which data they would like to see and show data that way.
+            Once data type is chosen, we must let the user know what color is which.
+                - This can mean using hte same colors throughout the entire program and just changing the text on a table or what have you on what each color represents.
+    */
 }
 
 function flyTo(center = [0, 0]) {
@@ -106,6 +123,7 @@ export {
     initMap,
     loadMarkers,
     addMarkersToMap,
+    addCirclesToMap,
     flyTo,
     setPitchAndBearing,
     setZoomLevel,

@@ -2,18 +2,24 @@ import * as map from './map.js';
 
 function setupUI() {
     let openBtn = document.querySelector("#openBtn");
-    let closeBtn = document.querySelector("#closeBtn");
     let sidebar = document.querySelector("#sideBar");
     let main = document.querySelector("#main");
+    let open = false;
 
     openBtn.onclick = (e) => {
-        sidebar.style.width = "250px";
-        main.querySelector("#main").style.marginLeft = "250px";
-    }
-
-    closeBtn.onclick = (e) => {
-        sidebar.style.width = "0";
-        main.style.marginLeft = "0";
+        if(open) {
+            sidebar.style.width = "250px";
+            main.style.marginLeft = "250px";
+            openBtn.innerHTML = "&#9776; Close Sidebar"
+            open = !sidebar;
+        }
+        else if(!open) {
+                sidebar.style.width = "0";
+                main.style.marginLeft = "0";
+                openBtn.innerHTML = "&#9776; Open Sidebar";
+                open = !open;
+            }
+        
     }
 }
 
