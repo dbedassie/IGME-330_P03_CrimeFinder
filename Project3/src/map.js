@@ -91,18 +91,6 @@ function loadMarkers() {
 
 }
 
-function addCirclesToMap() {
-    /*
-        TO DO:
-            Create circles on maps based on array of data.
-            Ethnicity, type of crime, etc.
-            Sort each of these categories with their own color.
-            Let user choose which data they would like to see and show data that way.
-            Once data type is chosen, we must let the user know what color is which.
-                - This can mean using hte same colors throughout the entire program and just changing the text on a table or what have you on what each color represents.
-    */
-}
-
 function flyTo(center = [0, 0]) {
     map.flyTo({
         center,
@@ -119,11 +107,26 @@ function setPitchAndBearing(pitch = 0, bearing = 0) {
     map.setBearing(bearing);
 }
 
+function changeMapColors() {
+    /*
+        Based on crime data selection, we will take different data from our JSON file to change the colors of the states in the map.
+    */
+}
+
+function changeCrimeTimeline() {
+    /*
+        If possible, we will change the timeline in where to see how crime was like at that 
+        time period. 
+        With doing so, we can change the JSON file we load in
+        ... OR ...
+        We can have the data stored in the same JSON file and just change all the data to grab that information instead.
+    */
+}
+
 export {
     initMap,
     loadMarkers,
     addMarkersToMap,
-    addCirclesToMap,
     flyTo,
     setPitchAndBearing,
     setZoomLevel,
