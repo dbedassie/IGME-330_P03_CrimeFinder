@@ -1,4 +1,5 @@
 import * as map from './map.js';
+import * as routes from './routes.js'
 
 function setupUI() {
     let openBtn = document.querySelector("#openBtn");
@@ -27,6 +28,7 @@ function init() {
     map.initMap();
     map.loadMarkers();
     map.addMarkersToMap();
+   routes.getRoutesForLatLon(40.03,-105.25, 60,150,"5.6","5.10");
     setupUI();
 }
 
