@@ -1,76 +1,62 @@
 body {
     margin: 0;
     padding: 0;
-    background: #011627;
-    color: #FDFFFC;
+    background: #393D3F;
+    color: #FDFDFF;
+    font-family: 'Open Sans', sans-serif;
+    border: 3px 3px solid;
 }
 
-.map-overlay {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.8);
-    margin-right: 20px;
-    font-family: Arial, sans-serif;
-    overflow: auto;
-    border-radius: 3px;
+#titleInfo {
+    text-align: center;
 }
 
-#map {
-    position: absolute;
-    top: 12em;
-    bottom: 0;
-    width: 100%;
-}
-
-
-#titleInfo button {
-    position: absolute;
-    top: 10px;
-    left: 10;
-}
-
-#legend {
-    padding: 10px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    line-height: 18px;
-    height: 150px;
-    margin-bottom: 40px;
-    width: 100px;
-}
-
-.legend-key {
-    display: inline-block;
-    border-radius: 20%;
-    width: 10px;
-    height: 10px;
-    margin-right: 5px;
-}
-
-#sideBar {
+#sidebar {
     height: 100%;
     width: 0;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #393D3F;
     overflow-x: hidden;
-    padding-top: 1em;
+    padding-top: 60px;
     transition: 0.5s;
 }
 
-#openBtn {
+#sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+#sidebar a:hover {
+    color: #F1F1F1;
+}
+
+#sidebar #closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#openbtn{
+    position: absolute;
     font-size: 20px;
     cursor: pointer;
-    background-color: #9C7178;
-    color: white;
-    padding: 5px 8px;
+    background-color: #FFF;
+    color: black;
+    padding: 5px 10px;
     border: none;
 }
 
-#openBtn:hover {
-    background-color: gray;
+#openbtn:hover {
+    background-color: #444;
 }
 
 #main {
@@ -94,4 +80,52 @@ body {
 .mapboxgl-popup-content {
     text-align: center;
     font-family: 'Open Sans', sans-serif;
+}
+
+.map-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.8);
+    font-family: 'Open Sans', sans-serif;
+}
+
+#map {
+    position: absolute;
+    top: 12em;
+    bottom: 0;
+    width: 100%;
+}
+
+#features {
+    top: 10.5em;
+    height: 200px;
+    margin-top: 20px;
+    width: 250px;
+    font-size: 12px;
+    color: black;
+    text-align: center;
+}
+
+#legend {
+    padding: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    line-height: 18px;
+    height: 150px;
+    margin-bottom: 40px;
+    width: 100px;
+}
+
+.legend-key {
+    display: inline-block;
+    border-radius: 20%;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  #sideBar {padding-top: 15px;}
+  #sideBar a {font-size: 18px;}
 }

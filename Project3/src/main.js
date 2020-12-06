@@ -2,23 +2,30 @@ import * as map from './map.js';
 import * as routes from './routes.js'
 
 function setupUI() {
-    let openBtn = document.querySelector("#openBtn");
-    let sidebar = document.querySelector("#sideBar");
+    let openBtn = document.querySelector("#openbtn");
+    let closeBtn = document.querySelector("#closebtn");
+    let sidebar = document.querySelector("#sidebar");
     let main = document.querySelector("#main");
     let legend = document.querySelector("#legend");
     let open = false;
 
     openBtn.onclick = (e) => {
-        if (open) {
+        if(!open) {
             sidebar.style.width = "250px";
             main.style.marginLeft = "250px";
-            open = !sidebar;
-        } else if (!open) {
+            open = true;
+        }
+        else{
             sidebar.style.width = "0";
             main.style.marginLeft = "0";
-            open = !open;
+            open = false;
         }
-
+    }
+    
+    closeBtn.onclick = (e) => {
+        sidebar.style.width = "0";
+        main.style.marginLeft = "0";
+        open = false;
     }
 
     // Setting up the map legend
