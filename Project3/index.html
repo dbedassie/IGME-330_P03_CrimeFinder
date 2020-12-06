@@ -3,7 +3,7 @@
 
 <head>
     <meta charset='utf-8' />
-    <title>Crime Finder</title>
+    <title>Rock Climbing</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
@@ -17,25 +17,61 @@
 <body>
     <div id='main'>
         <div id='titleInfo'>
-            <h1>Crime Finder</h1>
-            <h3>Track and find crimes throughout time in the US!</h3>
-            <button id='openBtn'>&#9776; Open Sidebar</button>
+            <h1>Rock Climbing Finder</h1>
+            <h3>Find climbs throughout the world!</h3>
+            <button id='openBtn'>&#9776;</button>
         </div>
         <div id='sideBar'>
             <p>CURRENTLY WORK IN PROGRESS</p>
-            <h4>Search</h4>
-            <input type='text' id='searchValue'>
-            <h4>Timeline</h4>
-            <h4>Current Location</h4>
-            <p id='currentLoc'>lorem ipsum</p>
-            <h4>Lorem ipsum</h4>
+            <div>
+                <h3>Place Name 1</h3>
+                <p>description of place 1</p>
+            </div>
+            <h2>Filters</h2>
+            <div>
+                <label for='diffSelect'>Difficulty</label>
+                <select name='difficulty' id='diffStart'>
+                    <option value='a'>A</option>
+                    <option value='a'>B</option>
+                    <option value='a'>C</option>
+                    <option value='a'>D</option>
+                    <option value='a'>E</option>
+                </select> to
+                <select name='difficulty' id='diffEnd'>
+                    <option value='a'>A</option>
+                    <option value='a'>B</option>
+                    <option value='a'>C</option>
+                    <option value='a'>D</option>
+                    <option value='a'>E</option>
+                </select>
+            </div>
+            <div>
+                <label for='starSelect'>Stars</label>
+                <select name='stars' id='starSelect'>
+                    <option value='a'>A</option>
+                    <option value='a'>B</option>
+                    <option value='a'>C</option>
+                    <option value='a'>D</option>
+                    <option value='a'>E</option>
+                </select> to
+                <select name='stars' id='starsEnd'>
+                    <option value='a'>A</option>
+                    <option value='a'>B</option>
+                    <option value='a'>C</option>
+                    <option value='a'>D</option>
+                    <option value='a'>E</option>
+                </select>
+            </div>
+            <div>
+                <p>Current Longitude:</p>
+                <p>Current Latitude:</p>
+            </div>
+            <div>
+                <button id='searchBtn'>Search</button>
+            </div>
         </div>
-        <div id='map'></div>
-        <div id='dataInfo'>
-            <p>Here will be information on area clicked. Crime stats, etc.</p>
-        </div>
+        <div class='map-overlay' id='map'></div>
+        <div class='map-overlay' id='legend'></div>
     </div>
 
-</body>
-
-</html>
+</body></html>

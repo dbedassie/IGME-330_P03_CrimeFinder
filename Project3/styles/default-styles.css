@@ -1,8 +1,19 @@
 body {
     margin: 0;
     padding: 0;
-    background: black;
-    color: white;
+    background: #011627;
+    color: #FDFFFC;
+}
+
+.map-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.8);
+    margin-right: 20px;
+    font-family: Arial, sans-serif;
+    overflow: auto;
+    border-radius: 3px;
 }
 
 #map {
@@ -10,26 +21,30 @@ body {
     top: 12em;
     bottom: 0;
     width: 100%;
-    height: 100%;
 }
 
-#titleInfo {
-    justify-content: center;
-    font-family: 'PT Serif', serif;
-    color: white;
-    z-index: 1;
-}
-
-#titleInfo h1,
-h3 {
-    text-align: center;
-    padding-top: 0px;
-}
 
 #titleInfo button {
     position: absolute;
     top: 10px;
     left: 10;
+}
+
+#legend {
+    padding: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    line-height: 18px;
+    height: 150px;
+    margin-bottom: 40px;
+    width: 100px;
+}
+
+.legend-key {
+    display: inline-block;
+    border-radius: 20%;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
 }
 
 #sideBar {
@@ -46,11 +61,11 @@ h3 {
 }
 
 #openBtn {
-    font-size: 12px;
+    font-size: 20px;
     cursor: pointer;
-    background-color: #111;
+    background-color: #9C7178;
     color: white;
-    padding: 10px 15px;
+    padding: 5px 8px;
     border: none;
 }
 
