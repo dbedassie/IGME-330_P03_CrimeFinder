@@ -132,13 +132,10 @@ function loadMarkers(routes) {
         }
         newFeature.properties.description += `<a href=${feature.url}>URL`;
         newFeature.properties.type = feature.type;
-        console.log(feature.name);
-        console.log(feature.location);
 
         // push it on to the 'geojson' array
         geojson.features.push(newFeature);
     }
-    console.log(geojson.features);
     addMarkersToMap();
 }
 

@@ -66,7 +66,7 @@ body {
 }
 
 .marker {
-    background-image: url('/Project3/images/icon.png');
+    background-image: url('../images/icon.png');
     background-size: cover;
     width: 50px;
     height: 50px;
@@ -155,7 +155,7 @@ body {
 .specificFilters {
     display: none;
     overflow: hidden;
-    width: 50px;
+    width: 75px;
 }
 
 .active, .collapsable:hover {

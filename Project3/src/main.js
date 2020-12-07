@@ -102,9 +102,12 @@ function init() {
     //routes.getRoutesForLatLon(40.03,-105.25, 60,150,"5.6","5.10");
     setupUI();
     routeArray = [];
-    filterBouldering = true;
-    filterSport = true;
-    filterTrad = true;
+    filterBouldering = false;
+    filterSport = false;
+    filterTrad = false;
+    boulderingBtn.click();
+    sportBtn.click();
+    tradBtn.click();
 
     document.querySelector('#map').onclick = (e) => {
         searchOnClick();
@@ -118,8 +121,6 @@ function searchOnClick() {
    curlatlon.children[0].innerHTML = "Current Longitude: " + latlon.lon + "<p>";
    curlatlon.children[1].innerHTML = "Current latitude: " + latlon.lat;
    routes.getRoutesForLatLon(latlon.lat, latlon.lon)
-    
-   console.log(routeArray);
     map.loadMarkers(routeArray);
 }
 

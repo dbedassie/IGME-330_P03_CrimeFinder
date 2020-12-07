@@ -10,7 +10,6 @@ function getRoutesForLatLon(lat, lon, maxDistance = 200, maxResults = 10, minDif
         url += "&minDiff=" + minDiff + "&maxDiff=" + maxDiff;
     }
     url += "&key=" + APIKEY;
-    console.log(url);
     let testurl = `https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=${lat}&lon=-105.25&maxDistance=200&minDiff=5.6&maxDiff=5.10&key=200989260-bba9ebf64d9ab61b88c33112f6c75d8f`
     let xhr = new XMLHttpRequest();
     xhr.onload = dataLoaded;
@@ -21,7 +20,6 @@ function getRoutesForLatLon(lat, lon, maxDistance = 200, maxResults = 10, minDif
 function dataLoaded(e) {
 
     let obj = JSON.parse(e.target.responseText);
-    console.log(obj.routes.length)
     routeList = [];
     for (let i = 0; i < obj.routes.length; i++) {
         let r = obj.routes[i];
@@ -125,7 +123,6 @@ function filterRoutes(type, minDiff, maxDiff, minStars, maxStars) {
         }
     }
 }
-    console.log(type + ": " + arr)
     return arr;
 }
 
