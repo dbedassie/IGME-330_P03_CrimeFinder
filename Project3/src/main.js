@@ -53,14 +53,17 @@ function setupUI() {
     //code for collapsables adapted from w3schools.com
     boulderingBtn.onclick  =(e) =>{
         setUpCollapsable(boulderingBtn);
+        filterBouldering = !filterBouldering;
     }
 
     sportBtn.onclick = (e) =>{
         setUpCollapsable(sportBtn);
+        filterSport != filterSport;
     }
 
     tradBtn.onclick = (e) =>{
         setUpCollapsable(tradBtn);
+        filterTrad != filterTrad;
     }
 
     // Setting up the map legend
