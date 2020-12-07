@@ -3,7 +3,7 @@ let geojson = {
     type: 'FeatureCollection',
     features: []
 };
-
+let lng, lat;
 function initMap() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiZGFiNjA4NCIsImEiOiJja2hkejFnbWgwMDUyMnFwbDViaTlrampqIn0.IL2DpOdf-QLlUPovKhZvKA';
 
@@ -12,6 +12,12 @@ function initMap() {
         style: 'mapbox://styles/mapbox/outdoors-v11',
         zoom: 4
     });
+
+    map.on('click', function (e) {
+        lng = JSON.stringify(e.lngLat.lng);
+        lat = JSON.stringify(e.lngLat.lat);
+      
+    })
 
     // The 'building' layer in the mapbox-streets vector source contains building-height
     // data from OpenStreetMap.
@@ -70,10 +76,7 @@ function initMap() {
 }
 
 function getMousePointer() {
-    map.on('click', function (e) {
-        let lng = JSON.stringify(e.lngLat.lng);
-        let lat = JSON.stringify(e.lngLat.lat);
-    })
+    return {lon: lng, lat: lat};
 }
 
 function addMarkersToMap() {
