@@ -4,7 +4,7 @@ const APIBASE = "https://www.mountainproject.com/data/"
 import * as main from "./main.js"
 
 let routeList;
-function getRoutesForLatLon(lat, lon, maxDistance = 200, maxResults = 100, minDiff, maxDiff) {
+function getRoutesForLatLon(lat, lon, maxDistance = 200, maxResults = 10, minDiff, maxDiff) {
     let url = APIBASE + "get-routes-for-lat-lon?lat=" + lat + "&lon=" + lon + "&maxDistance=" + maxDistance + "&maxResults=" + maxResults
     if (minDiff != 0 && maxDiff != 0) {
         url += "&minDiff=" + minDiff + "&maxDiff=" + maxDiff;
@@ -25,7 +25,7 @@ function dataLoaded(e) {
     routeList = [];
     for (let i = 0; i < obj.routes.length; i++) {
         let r = obj.routes[i];
-        routeList[i] = new Route(r.name, parseType(r.type), r.rating, r.stars, r.starvotes, r.lat, r.lon, r.url);
+        routeList[i] = new Route(r.name, parseType(r.type), r.rating, r.stars, r.starvotes, r.latitude, r.longitude, r.url, r.location);
 
     }
     main.applyFilters();
@@ -98,7 +98,7 @@ function parseType(type) {
     return "nah";
 }
 class Route {
-    constructor(name, type, grade, stars, starvotes, lat, lon, url) {
+    constructor(name, type, grade, stars, starvotes, lat, lon, url, loc) {
         this.name = name;
         this.type = type;
         this.grade = grade;
@@ -107,6 +107,7 @@ class Route {
         this.lat = lat;
         this.lon = lon;
         this.url = url;
+        this.location = loc;
     }
 }
 

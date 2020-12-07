@@ -99,8 +99,6 @@ function setUpCollapsable(button){
 
 function init() {
     map.initMap();
-    map.loadMarkers();
-    map.addMarkersToMap();
     //routes.getRoutesForLatLon(40.03,-105.25, 60,150,"5.6","5.10");
     setupUI();
     routeArray = [];
@@ -117,11 +115,12 @@ function init() {
 
 function searchOnClick() {
    let latlon = map.getMousePointer();
-   curlatlon.children[0].innerHTML = "<p>Current Longitude: " + latlon.lon + "<p>";
+   curlatlon.children[0].innerHTML = "Current Longitude: " + latlon.lon + "<p>";
    curlatlon.children[1].innerHTML = "Current latitude: " + latlon.lat;
    routes.getRoutesForLatLon(latlon.lat, latlon.lon)
     
    console.log(routeArray);
+    map.loadMarkers(routeArray);
 }
 
 function applyFilters(){

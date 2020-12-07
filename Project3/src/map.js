@@ -4,6 +4,8 @@ let geojson = {
     features: []
 };
 let lng, lat;
+let mapMarkers = new Array();
+
 function initMap() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiZGFiNjA4NCIsImEiOiJja2hkejFnbWgwMDUyMnFwbDViaTlrampqIn0.IL2DpOdf-QLlUPovKhZvKA';
 
@@ -79,118 +81,35 @@ function getMousePointer() {
     return {lon: lng, lat: lat};
 }
 
-function addMarkersToMap() {
-    // add markers to map
-    for (let feature of geojson.features) {
-        /*
-            // create a HTML element for each feature
-        let el = document.createElement('div');
-        el.className = 'marker';
-
-        // make a marker for each feature and add to the map
-        new mapboxgl.Marker(el)
-            .setLngLat(feature.geometry.coordinates)
-        new mapboxgl.Marker(el)
-            .setLngLat(feature.geometry.coordinates)
-            .setPopup(new mapboxgl.Popup({
-                    offset: 25
-                }) // add popups
-                .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>'))
-            .addTo(map);
-        */
-        
-        addMarker(feature.geometry.coordinates, feature.properties.title, feature.properties.description, feature.properties.className = "marker");
-    }
-}
-
-function addMarker(coordinates, title, description, className) {
+function addMarker(coordinates, title, description, className, type) {
     let el = document.createElement('div');
     el.className = className;
+    let popupClass = "";
+    
+    if(type == "Boulder"){
+        popupClass = "bouldering";
+    } else if(type == "Sport"){
+        popupClass = "sport";
+    } else if(type == "Trad"){
+        popupClass = "trad";
+    }
     
     new mapboxgl.Marker(el)
         .setLngLat(coordinates)
-        .setPopup(new mapboxgl.Popup({ offset : 25}) // add popups
-        .setHTML('<h3>' + title + '</h3><p>' + description + '</p>'))
+        .setPopup(new mapboxgl.Popup({offset : 25, className : popupClass})
+        .setHTML('<h3>' + title + '</h3><br><p>' + description + '</p>'))
         .addTo(map);
 }
 
-function loadMarkers() {
-    /*const coffeeShops = [
-        {
-            latitude: 43.084156,
-            longitude: -77.67514,
-            title: "Artesano Bakery & Cafe"
-	},
+function addMarkersToMap() {
+    for (let feature of geojson.features) {
+        addMarker(feature.geometry.coordinates, feature.properties.title, feature.properties.description, feature.properties.className = "marker", feature.properties.type);
+    }
+}
 
-        {
-            latitude: 43.083866,
-            longitude: -77.66901,
-            title: "Beanz"
-	},
-
-        {
-            latitude: 43.082520,
-            longitude: -77.67980,
-            title: "Starbucks"
-	},
-
-        {
-            latitude: 43.086678,
-            longitude: -77.669014,
-            title: "The College Grind"
-	},
-
-        {
-            latitude: 43.082634,
-            longitude: -77.68004,
-            title: "The Cafe & Market at Crossroads"
-	},
-
-        {
-            latitude: 43.08382,
-            longitude: -77.674805,
-            title: "RITZ Sports Zone"
-	},
-
-        {
-            latitude: 43.086502,
-            longitude: -77.66912,
-            title: "The Commons"
-	},
-
-        {
-            latitude: 43.08324,
-            longitude: -77.68105,
-            title: "The Market at Global Village"
-	},
-
-        {
-            latitude: 43.08384,
-            longitude: -77.67457,
-            title: "Brick City Cafe"
-	},
-
-        {
-            latitude: 43.084904,
-            longitude: -77.6676,
-            title: "Corner Store"
-	},
-
-        {
-            latitude: 43.08464,
-            longitude: -77.680145,
-            title: "CTRL ALT DELi"
-	},
-
-        {
-            latitude: 43.08359,
-            longitude: -77.66921,
-            title: "Gracie's"
-	}
-];*/
-    let POI = [];
-    // now convert this data to GeoJSON
-    for (let shop of POI) {
+function loadMarkers(routes) {
+    geojson.features = [];
+    for (let feature of routes) {
         // an "empty" GEOJSON feature
         const newFeature = {
             type: 'Feature',
@@ -204,15 +123,29 @@ function loadMarkers() {
             }
         };
 
-        // add some properties for the current coffee shop
-        newFeature.geometry.coordinates[0] = shop.longitude;
-        newFeature.geometry.coordinates[1] = shop.latitude;
-        newFeature.properties.title = shop.title;
+        // add some properties for the current route
+        newFeature.geometry.coordinates[0] = feature.lon;
+        newFeature.geometry.coordinates[1] = feature.lat;
+        newFeature.properties.title = feature.name;
+        for (let desc of feature.location) {
+            newFeature.properties.description += desc + "<br>";
+        }
+        newFeature.properties.description += `<a href=${feature.url}>URL`;
+        newFeature.properties.type = feature.type;
+        console.log(feature.name);
+        console.log(feature.location);
 
         // push it on to the 'geojson' array
         geojson.features.push(newFeature);
     }
     console.log(geojson.features);
+    addMarkersToMap();
+}
+
+function clearMarkers() {
+    for (let feature of geojson.features) {
+        feature.remove();
+    }
 }
 
 function flyTo(center = [0, 0]) {

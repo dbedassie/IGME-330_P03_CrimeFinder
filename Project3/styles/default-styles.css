@@ -22,9 +22,7 @@ body {
     overflow-x: hidden;
     padding-top: 60px;
     transition: 0.5s;
-    padding-left: 10px;
-    padding-right: 5px;
-
+    overflow-y: hidden;
 }
 
 #sidebar a {
@@ -68,21 +66,42 @@ body {
 }
 
 .marker {
-    background-image: url('/images/mapbox-icon.png');
+    background-image: url('/Project3/images/icon.png');
     background-size: cover;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
+    color: black;
 }
 
 .mapboxgl-popup {
     max-width: 200px;
+    color: black;
 }
 
 .mapboxgl-popup-content {
     text-align: center;
     font-family: 'Open Sans', sans-serif;
+    color: black;
+}
+
+.trad .mapboxgl-popup-content h3{
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    text-shadow: 1px 1px red;
+}
+
+.bouldering .mapboxgl-popup-content h3{
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    text-shadow: 1px 1px green;
+}
+
+.sport .mapboxgl-popup-content h3{
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    text-shadow: 1px 1px yellow;
 }
 
 .map-overlay {
@@ -102,7 +121,7 @@ body {
 
 #features {
     top: 10.5em;
-    height: 200px;
+    height: 130px;
     margin-top: 20px;
     width: 250px;
     font-size: 12px;
@@ -136,7 +155,7 @@ body {
 .specificFilters {
     display: none;
     overflow: hidden;
-    
+    width: 50px;
 }
 
 .active, .collapsable:hover {
@@ -144,7 +163,6 @@ body {
     color: #444;
   }
 .collapsable{
-   
         background-color: #444;
         color: #FFF;
         cursor: pointer;
@@ -154,5 +172,4 @@ body {
         text-align: left;
         outline: none;
         font-size: 15px;
-   
 }
